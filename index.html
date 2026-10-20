@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratório JavaScript | IFRN</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="cabecalho">
+      <div class="etiqueta">IFRN • JavaScript para a Web</div>
+      <h1>Laboratório de JavaScript</h1>
+      <p>Explore eventos HTML, manipulação do DOM e recursos do objeto <code>window</code> com exemplos interativos.</p>
+    </div>
+  </header>
+
+  <main>
+    <p class="intro">Clique nos botões e observe como o JavaScript altera o conteúdo da página e acessa informações do
+      navegador.</p>
+    <div class="grade">
+      <section class="card">
+        <h2><span class="numero">1</span>Eventos HTML</h2>
+        <p>Eventos permitem executar uma função quando o usuário interage com a página.</p>
+        <button id="botaoClique">Clique aqui</button>
+        <button id="botaoLimparEvento" class="secundario">Limpar</button>
+        <p id="resultadoEvento" class="resultado" aria-live="polite">Aguardando um clique...</p>
+        <label for="campoNome">Digite seu nome para testar o evento de entrada:</label>
+        <input id="campoNome" type="text" placeholder="Seu nome">
+        <p id="saudacao" class="resultado" aria-live="polite">Sua saudação aparecerá aqui.</p>
+      </section>
+
+      <section class="card">
+        <h2><span class="numero">2</span>Selecionar e modificar o DOM</h2>
+        <p>O DOM permite localizar elementos HTML e mudar seu conteúdo ou estilo.</p>
+        <p id="paragrafoDemo" class="amostra">Este parágrafo será modificado pelo JavaScript.</p>
+        <button id="botaoTexto">Alterar texto</button>
+        <button id="botaoCor">Mudar cor</button>
+        <button id="botaoVisibilidade" class="secundario">Ocultar parágrafo</button>
+        <p id="paragrafoExtra" class="amostra">Este é um segundo parágrafo, selecionado junto com os demais.</p>
+        <button id="botaoContar" class="secundario">Contar parágrafos</button>
+        <p id="resultadoDom" class="resultado" aria-live="polite">Os resultados do DOM aparecerão aqui.</p>
+      </section>
+
+      <section class="card">
+        <h2><span class="numero">3</span>Criar elementos HTML</h2>
+        <p>Com <code>document.createElement()</code>, podemos criar elementos e adicioná-los ao documento.</p>
+        <label for="campoItem">Texto do novo item</label>
+        <input id="campoItem" type="text" placeholder="Ex.: Aprender JavaScript">
+        <button id="botaoAdicionar">Adicionar item</button>
+        <button id="botaoLimparLista" class="secundario">Limpar lista</button>
+        <ul id="listaItens" class="lista-criada">
+          <li>Este item já existia no HTML.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2><span class="numero">4</span>Manipulação da janela (window)</h2>
+        <p>O objeto <code>window</code> oferece informações sobre a janela do navegador.</p>
+        <button id="botaoInformacoes">Atualizar informações</button>
+        <div class="painel-janela" aria-live="polite">
+          <div><strong>Largura da janela</strong><span id="largura">—</span></div>
+          <div><strong>Altura da janela</strong><span id="altura">—</span></div>
+          <div><strong>Endereço da página</strong><span id="endereco">—</span></div>
+          <div><strong>Idioma do navegador</strong><span id="idioma">—</span></div>
+        </div>
+        <button id="botaoAlerta">Testar alert()</button>
+        <button id="botaoConfirmar" class="secundario">Testar confirm()</button>
+        <p id="resultadoJanela" class="resultado" aria-live="polite">Clique em um botão para testar a API Window.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>Atividade prática — JavaScript para a Web • IFRN</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

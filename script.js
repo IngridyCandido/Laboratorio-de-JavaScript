@@ -89,3 +89,112 @@
         ? "Você clicou em OK na caixa de confirmação."
         : "Você clicou em Cancelar na caixa de confirmação.";
     });
+
+    // 5. DIMENSÕES DA JANELA
+    function atualizarDimensoesJanela() {
+      document.getElementById("larguraExterna").textContent = window.outerWidth + " px";
+      document.getElementById("alturaExterna").textContent = window.outerHeight + " px";
+    }
+
+    document.getElementById("botaoDimensoes").addEventListener("click", atualizarDimensoesJanela);
+    window.addEventListener("resize", atualizarDimensoesJanela);
+    atualizarDimensoesJanela();
+
+    // 6. CONTROLE DA ROLAGEM
+    function atualizarPosicaoRolagem() {
+      document.getElementById("posicaoX").textContent = window.scrollX + " px";
+      document.getElementById("posicaoY").textContent = window.scrollY + " px";
+    }
+
+    window.addEventListener("scroll", atualizarPosicaoRolagem, { passive: true });
+    atualizarPosicaoRolagem();
+
+    document.getElementById("botaoScrollTo").addEventListener("click", function () {
+      const x = Number(document.getElementById("destinoX").value);
+      const y = Number(document.getElementById("destinoY").value);
+      window.scrollTo({ left: x, top: y, behavior: "smooth" });
+      document.getElementById("resultadoRolagem").textContent =
+        "Rolagem movida para a posição (" + x + ", " + y + ").";
+    });
+
+    document.getElementById("botaoScrollBy").addEventListener("click", function () {
+      const deslocamentoY = Number(document.getElementById("deslocamentoY").value);
+      window.scrollBy({ top: deslocamentoY, behavior: "smooth" });
+      document.getElementById("resultadoRolagem").textContent =
+        "Página deslocada " + deslocamentoY + " px na vertical.";
+    });
+
+    // 7. TEMPORIZADORES E CONTAGEM REGRESSIVA
+    const duracaoTemporizador = document.getElementById("duracaoTemporizador");
+    const resultadoTemporizador = document.getElementById("resultadoTemporizador");
+    const resultadoAviso = document.getElementById("resultadoAviso");
+    const resultadoContagem = document.getElementById("resultadoContagem");
+    const botaoCancelarAviso = document.getElementById("botaoCancelarAviso");
+    const botaoPararContagem = document.getElementById("botaoPararContagem");
+    let avisoAgendado;
+    let intervaloContagem;
+
+    function obterDuracao() {
+      const duracao = Number(duracaoTemporizador.value);
+      if (!Number.isInteger(duracao) || duracao < 1) {
+        resultadoTemporizador.textContent = "Informe uma duração em segundos maior ou igual a 1.";
+        duracaoTemporizador.focus();
+        return null;
+      }
+      return duracao;
+    }
+
+    document.getElementById("botaoAgendar").addEventListener("click", function () {
+      const duracao = obterDuracao();
+      if (duracao === null) return;
+
+      if (avisoAgendado !== undefined) {
+        window.clearTimeout(avisoAgendado);
+      }
+      resultadoAviso.textContent = "Aviso agendado para daqui a " + duracao + " segundos.";
+      botaoCancelarAviso.disabled = false;
+      avisoAgendado = window.setTimeout(function () {
+        avisoAgendado = undefined;
+        botaoCancelarAviso.disabled = true;
+        resultadoAviso.textContent = "O aviso agendado com setTimeout() foi executado.";
+      }, duracao * 1000);
+    });
+
+    botaoCancelarAviso.addEventListener("click", function () {
+      if (avisoAgendado === undefined) return;
+      window.clearTimeout(avisoAgendado);
+      avisoAgendado = undefined;
+      botaoCancelarAviso.disabled = true;
+      resultadoAviso.textContent = "Aviso cancelado com clearTimeout().";
+    });
+
+    document.getElementById("botaoIniciarContagem").addEventListener("click", function () {
+      const duracao = obterDuracao();
+      if (duracao === null) return;
+
+      if (intervaloContagem !== undefined) {
+        window.clearInterval(intervaloContagem);
+      }
+      let restante = duracao;
+      resultadoContagem.textContent = "Contagem regressiva: " + restante + " s";
+      botaoPararContagem.disabled = false;
+      intervaloContagem = window.setInterval(function () {
+        restante -= 1;
+        if (restante <= 0) {
+          window.clearInterval(intervaloContagem);
+          intervaloContagem = undefined;
+          botaoPararContagem.disabled = true;
+          resultadoContagem.textContent = "Contagem concluída com setInterval().";
+          return;
+        }
+        resultadoContagem.textContent = "Contagem regressiva: " + restante + " s";
+      }, 1000);
+    });
+
+    botaoPararContagem.addEventListener("click", function () {
+      if (intervaloContagem === undefined) return;
+      window.clearInterval(intervaloContagem);
+      intervaloContagem = undefined;
+      botaoPararContagem.disabled = true;
+      resultadoContagem.textContent = "Contagem interrompida com clearInterval().";
+    });

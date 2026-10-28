@@ -70,6 +70,48 @@
         <button id="botaoConfirmar" class="secundario">Testar confirm()</button>
         <p id="resultadoJanela" class="resultado" aria-live="polite">Clique em um botão para testar a API Window.</p>
       </section>
+
+      <section class="card">
+        <h2><span class="numero">5</span>Dimensões da janela</h2>
+        <p><code>outerWidth</code> e <code>outerHeight</code> informam as dimensões externas da janela do navegador.</p>
+        <button id="botaoDimensoes">Atualizar dimensões</button>
+        <div class="painel-janela" aria-live="polite">
+          <div><strong>Largura externa (outerWidth)</strong><span id="larguraExterna">—</span></div>
+          <div><strong>Altura externa (outerHeight)</strong><span id="alturaExterna">—</span></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2><span class="numero">6</span>Controle da rolagem</h2>
+        <p>Consulte a posição atual e use <code>scrollTo()</code> ou <code>scrollBy()</code> para mover a página.</p>
+        <div class="painel-janela" aria-live="polite">
+          <div><strong>Posição horizontal (scrollX)</strong><span id="posicaoX">0 px</span></div>
+          <div><strong>Posição vertical (scrollY)</strong><span id="posicaoY">0 px</span></div>
+        </div>
+        <label for="destinoX">Posição horizontal para scrollTo (px)</label>
+        <input id="destinoX" type="number" step="1" value="0">
+        <label for="destinoY">Posição vertical para scrollTo (px)</label>
+        <input id="destinoY" type="number" step="1" value="0">
+        <button id="botaoScrollTo">Ir para a posição</button>
+        <label for="deslocamentoY">Deslocamento vertical para scrollBy (px)</label>
+        <input id="deslocamentoY" type="number" step="1" value="200">
+        <button id="botaoScrollBy">Deslocar página</button>
+        <p id="resultadoRolagem" class="resultado" aria-live="polite">A posição da rolagem será atualizada aqui.</p>
+      </section>
+
+      <section class="card">
+        <h2><span class="numero">7</span>Temporizadores e contagem regressiva</h2>
+        <p>Agende uma ação com <code>setTimeout()</code> ou inicie uma contagem com <code>setInterval()</code>.</p>
+        <label for="duracaoTemporizador">Duração (segundos)</label>
+        <input id="duracaoTemporizador" type="number" min="1" step="1" value="5">
+        <button id="botaoAgendar">Agendar aviso</button>
+        <button id="botaoCancelarAviso" class="secundario" disabled>Cancelar aviso</button>
+        <p id="resultadoAviso" class="resultado" aria-live="polite">Nenhum aviso agendado.</p>
+        <button id="botaoIniciarContagem">Iniciar contagem</button>
+        <button id="botaoPararContagem" class="secundario" disabled>Parar contagem</button>
+        <p id="resultadoContagem" class="resultado" aria-live="polite">A contagem regressiva aparecerá aqui.</p>
+        <p id="resultadoTemporizador" class="resultado" aria-live="polite">Escolha uma duração em segundos para iniciar.</p>
+      </section>
     </div>
   </main>
 

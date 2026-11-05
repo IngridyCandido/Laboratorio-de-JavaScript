@@ -1,4 +1,4 @@
-    // 1. EVENTOS HTML: click e input
+    // 1. EVENTOS DO MOUSE
     const botaoClique = document.getElementById("botaoClique");
     const resultadoEvento = document.getElementById("resultadoEvento");
 
@@ -12,11 +12,72 @@
       document.getElementById("saudacao").textContent = "Sua saudação aparecerá aqui.";
     });
 
-    document.getElementById("campoNome").addEventListener("input", function (evento) {
+    const areaMouse = document.getElementById("areaMouse");
+    const resultadoMouse = document.getElementById("resultadoMouse");
+
+    areaMouse.addEventListener("dblclick", function () {
+      resultadoMouse.textContent = "Evento dblclick acionado! Você deu um clique duplo.";
+    });
+
+    areaMouse.addEventListener("mouseover", function () {
+      resultadoMouse.textContent = "Evento mouseover acionado! O mouse entrou na área.";
+    });
+
+    areaMouse.addEventListener("mouseout", function () {
+      resultadoMouse.textContent = "Evento mouseout acionado! O mouse saiu da área.";
+    });
+
+    areaMouse.addEventListener("mousemove", function (evento) {
+      document.getElementById("posicaoMouse").textContent =
+        "Evento mousemove: posição (" + evento.offsetX + ", " + evento.offsetY + ").";
+    });
+
+    // 2. EVENTOS DO TECLADO
+    const campoTeclado = document.getElementById("campoTeclado");
+    const resultadoTeclado = document.getElementById("resultadoTeclado");
+
+    campoTeclado.addEventListener("keydown", function (evento) {
+      resultadoTeclado.textContent = "Evento keydown acionado! Tecla pressionada: " + evento.key + ".";
+    });
+
+    campoTeclado.addEventListener("keyup", function (evento) {
+      resultadoTeclado.textContent = "Evento keyup acionado! Tecla liberada: " + evento.key + ".";
+    });
+
+    // 3. EVENTOS DE FORMULÁRIOS E CAMPOS
+    const campoNome = document.getElementById("campoNome");
+
+    campoNome.addEventListener("input", function (evento) {
       const nome = evento.target.value.trim();
       document.getElementById("saudacao").textContent = nome
         ? "Olá, " + nome + "! Você acionou o evento input."
         : "Digite seu nome para ver a saudação.";
+    });
+
+    campoNome.addEventListener("focus", function () {
+      document.getElementById("resultadoCampo").textContent = "Evento focus acionado! O campo recebeu foco.";
+    });
+
+    campoNome.addEventListener("blur", function () {
+      document.getElementById("resultadoCampo").textContent = "Evento blur acionado! O campo perdeu o foco.";
+    });
+
+    document.getElementById("opcaoEvento").addEventListener("change", function (evento) {
+      document.getElementById("resultadoCampo").textContent =
+        "Evento change acionado! Opção selecionada: " + (evento.target.value || "nenhuma") + ".";
+    });
+
+    document.getElementById("formularioEventos").addEventListener("submit", function (evento) {
+      evento.preventDefault();
+      const nome = campoNome.value.trim();
+      document.getElementById("resultadoFormulario").textContent = nome
+        ? "Evento submit acionado! Formulário enviado por " + nome + "."
+        : "Evento submit acionado! Formulário enviado sem nome.";
+    });
+
+    // 4. EVENTOS DE CARREGAMENTO E ROLAGEM
+    window.addEventListener("load", function () {
+      document.getElementById("resultadoLoad").textContent = "Evento load acionado! A página foi carregada.";
     });
 
     // 2. MANIPULAÇÃO DO DOM: selecionar e modificar elementos
@@ -104,6 +165,8 @@
     function atualizarPosicaoRolagem() {
       document.getElementById("posicaoX").textContent = window.scrollX + " px";
       document.getElementById("posicaoY").textContent = window.scrollY + " px";
+      document.getElementById("resultadoScroll").textContent =
+        "Evento scroll acionado! Posição vertical: " + window.scrollY + " px.";
     }
 
     window.addEventListener("scroll", atualizarPosicaoRolagem, { passive: true });

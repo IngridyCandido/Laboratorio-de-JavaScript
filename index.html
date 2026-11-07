@@ -143,7 +143,52 @@
         <button id="botaoIniciarContagem">Iniciar contagem</button>
         <button id="botaoPararContagem" class="secundario" disabled>Parar contagem</button>
         <p id="resultadoContagem" class="resultado" aria-live="polite">A contagem regressiva aparecerá aqui.</p>
-        <p id="resultadoTemporizador" class="resultado" aria-live="polite">Escolha uma duração em segundos para iniciar.</p>
+        <p id="resultadoTemporizador" class="resultado" aria-live="polite">Escolha uma duração em segundos para iniciar.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2><span class="numero">11</span>Seletores de elementos</h2>
+        <p>Use diferentes métodos para localizar elementos dentro da amostra.</p>
+        <div id="amostrasSeletores" class="amostra">
+          <p class="alvoClasse">Primeiro parágrafo com a classe de teste.</p>
+          <p class="alvoClasse">Segundo parágrafo com a mesma classe.</p>
+          <p>Parágrafo sem a classe de teste.</p>
+        </div>
+        <button id="botaoSelecionarClasse">Selecionar por classe</button>
+        <button id="botaoSelecionarTag" class="secundario">Selecionar por tag</button>
+        <button id="botaoSelecionarPrimeiro" class="secundario">Selecionar primeiro</button>
+        <p id="resultadoSeletores" class="resultado" aria-live="polite">Os resultados dos seletores aparecerão aqui.</p>
+      </section>
+
+      <section class="card">
+        <h2><span class="numero">12</span>Alteração de conteúdo</h2>
+        <p><code>innerHTML</code> interpreta marcação HTML; <code>innerText</code> altera o texto renderizado.</p>
+        <p id="amostraConteudo" class="amostra"><strong>Este texto está em negrito.</strong> O conteúdo será alterado.
+        </p>
+        <button id="botaoInnerHTML">Alterar com innerHTML</button>
+        <button id="botaoInnerText" class="secundario">Alterar com innerText</button>
+        <p id="resultadoConteudo" class="resultado" aria-live="polite">Escolha como modificar o conteúdo da amostra.</p>
+      </section>
+
+      <section class="card">
+        <h2><span class="numero">13</span>Classes CSS</h2>
+        <p>Adicione, remova ou alterne a classe <code>destaque</code> na amostra.</p>
+        <p id="amostraClasses" class="amostra">A aparência deste texto muda conforme a classe CSS.</p>
+        <button id="botaoAdicionarClasse">Adicionar classe</button>
+        <button id="botaoRemoverClasse" class="secundario">Remover classe</button>
+        <button id="botaoAlternarClasse" class="secundario">Alternar classe</button>
+        <p id="resultadoClasses" class="resultado" aria-live="polite">A classe destaque ainda não foi aplicada.</p>
+      </section>
+
+      <section id="atributos" class="card">
+        <h2><span class="numero">14</span>Atributos HTML</h2>
+        <p>Defina o atributo <code>style</code> para alterar a aparência do link e consulte seu valor.</p>
+        <a id="linkAtributo" href="#atributos">Este link terá o estilo alterado.</a>
+        <button id="botaoDefinirAtributo">Definir atributo</button>
+        <button id="botaoConsultarAtributo" class="secundario">Consultar atributo</button>
+        <button id="botaoRemoverAtributo" class="secundario">Remover atributo</button>
+        <p id="resultadoAtributo" class="resultado" aria-live="polite">O valor do atributo aparecerá aqui.</p>
       </section>
     </div>
   </main>

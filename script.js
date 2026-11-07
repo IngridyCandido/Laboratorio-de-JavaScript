@@ -80,7 +80,7 @@
       document.getElementById("resultadoLoad").textContent = "Evento load acionado! A página foi carregada.";
     });
 
-    // 2. MANIPULAÇÃO DO DOM: selecionar e modificar elementos
+    // 5. SELECIONAR E MODIFICAR O DOM
     const paragrafoDemo = document.getElementById("paragrafoDemo");
 
     document.getElementById("botaoTexto").addEventListener("click", function () {
@@ -107,7 +107,7 @@
         "Foram encontrados " + paragrafos.length + " parágrafos dentro dos cartões.";
     });
 
-    // 3. CRIAÇÃO DE ELEMENTOS HTML
+    // 6. CRIAR ELEMENTOS HTML
     document.getElementById("botaoAdicionar").addEventListener("click", function () {
       const campo = document.getElementById("campoItem");
       const texto = campo.value.trim();
@@ -127,7 +127,7 @@
       document.getElementById("listaItens").replaceChildren();
     });
 
-    // 4. MANIPULAÇÃO DA JANELA: propriedades e funções de window
+    // 7. MANIPULAÇÃO DA JANELA (WINDOW)
     function atualizarInformacoesJanela() {
       document.getElementById("largura").textContent = window.innerWidth + " px";
       document.getElementById("altura").textContent = window.innerHeight + " px";
@@ -151,7 +151,7 @@
         : "Você clicou em Cancelar na caixa de confirmação.";
     });
 
-    // 5. DIMENSÕES DA JANELA
+    // 8. DIMENSÕES DA JANELA
     function atualizarDimensoesJanela() {
       document.getElementById("larguraExterna").textContent = window.outerWidth + " px";
       document.getElementById("alturaExterna").textContent = window.outerHeight + " px";
@@ -161,7 +161,7 @@
     window.addEventListener("resize", atualizarDimensoesJanela);
     atualizarDimensoesJanela();
 
-    // 6. CONTROLE DA ROLAGEM
+    // 9. CONTROLE DA ROLAGEM (TAMBÉM ATUALIZA O EVENTO DO CARD 4)
     function atualizarPosicaoRolagem() {
       document.getElementById("posicaoX").textContent = window.scrollX + " px";
       document.getElementById("posicaoY").textContent = window.scrollY + " px";
@@ -187,7 +187,7 @@
         "Página deslocada " + deslocamentoY + " px na vertical.";
     });
 
-    // 7. TEMPORIZADORES E CONTAGEM REGRESSIVA
+    // 10. TEMPORIZADORES E CONTAGEM REGRESSIVA
     const duracaoTemporizador = document.getElementById("duracaoTemporizador");
     const resultadoTemporizador = document.getElementById("resultadoTemporizador");
     const resultadoAviso = document.getElementById("resultadoAviso");
@@ -260,4 +260,85 @@
       intervaloContagem = undefined;
       botaoPararContagem.disabled = true;
       resultadoContagem.textContent = "Contagem interrompida com clearInterval().";
+    });
+
+    // 11. SELETORES DE ELEMENTOS
+    const amostrasSeletores = document.getElementById("amostrasSeletores");
+
+    document.getElementById("botaoSelecionarClasse").addEventListener("click", function () {
+      const elementos = amostrasSeletores.getElementsByClassName("alvoClasse");
+      document.getElementById("resultadoSeletores").textContent =
+        "getElementsByClassName() encontrou " + elementos.length + " elementos com a classe alvoClasse.";
+    });
+
+    document.getElementById("botaoSelecionarTag").addEventListener("click", function () {
+      const elementos = amostrasSeletores.getElementsByTagName("p");
+      document.getElementById("resultadoSeletores").textContent =
+        "getElementsByTagName() encontrou " + elementos.length + " elementos <p> na amostra.";
+    });
+
+    document.getElementById("botaoSelecionarPrimeiro").addEventListener("click", function () {
+      const elemento = amostrasSeletores.querySelector(".alvoClasse");
+      document.getElementById("resultadoSeletores").textContent =
+        "querySelector() encontrou o primeiro elemento — classe: " + elemento.classList[0] + ".";
+    });
+
+    // 12. ALTERAÇÃO DE CONTEÚDO
+    const amostraConteudo = document.getElementById("amostraConteudo");
+
+    document.getElementById("botaoInnerHTML").addEventListener("click", function () {
+      amostraConteudo.innerHTML = "<strong>HTML inserido!</strong> O texto em negrito foi criado com innerHTML.";
+      document.getElementById("resultadoConteudo").textContent =
+        "O navegador interpretou a marcação HTML inserida.";
+    });
+
+    document.getElementById("botaoInnerText").addEventListener("click", function () {
+      amostraConteudo.innerText = "Conteúdo substituído como texto renderizado usando innerText.";
+      document.getElementById("resultadoConteudo").textContent =
+        "O conteúdo foi substituído por texto, sem interpretar marcação HTML.";
+    });
+
+    // 13. CLASSES CSS
+    const amostraClasses = document.getElementById("amostraClasses");
+    const resultadoClasses = document.getElementById("resultadoClasses");
+
+    document.getElementById("botaoAdicionarClasse").addEventListener("click", function () {
+      amostraClasses.classList.add("destaque");
+      resultadoClasses.textContent = "classList.add() adicionou a classe destaque.";
+    });
+
+    document.getElementById("botaoRemoverClasse").addEventListener("click", function () {
+      amostraClasses.classList.remove("destaque");
+      resultadoClasses.textContent = "classList.remove() removeu a classe destaque.";
+    });
+
+    document.getElementById("botaoAlternarClasse").addEventListener("click", function () {
+      const destaqueAtivado = amostraClasses.classList.toggle("destaque");
+      resultadoClasses.textContent = destaqueAtivado
+        ? "classList.toggle() adicionou a classe destaque."
+        : "classList.toggle() removeu a classe destaque.";
+    });
+
+    // 14. ATRIBUTOS HTML
+    const linkAtributo = document.getElementById("linkAtributo");
+    const resultadoAtributo = document.getElementById("resultadoAtributo");
+
+    document.getElementById("botaoDefinirAtributo").addEventListener("click", function () {
+      linkAtributo.setAttribute(
+        "style",
+        "display: inline-block; padding: 8px; background-color: #fff2c5; color: #102d63; border-radius: 6px;"
+      );
+      resultadoAtributo.textContent = "O atributo style foi definido e o visual do link foi alterado.";
+    });
+
+    document.getElementById("botaoConsultarAtributo").addEventListener("click", function () {
+      const estilo = linkAtributo.getAttribute("style");
+      resultadoAtributo.textContent = estilo
+        ? "getAttribute() retornou: " + estilo
+        : "O atributo style ainda não foi definido.";
+    });
+
+    document.getElementById("botaoRemoverAtributo").addEventListener("click", function () {
+      linkAtributo.removeAttribute("style");
+      resultadoAtributo.textContent = "removeAttribute() removeu o atributo style.";
     });

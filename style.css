@@ -172,6 +172,22 @@
         font-size: .8rem;
         color: #53647d;
     }
+      .card h3 {
+        margin: 22px 0 6px;
+        color: var(--azul);
+        font-size: 1.05rem;
+    }
+
+    .card h3:first-of-type {
+        margin-top: 12px;
+    }
+
+    code {
+        background: #8d8c8c;
+        padding: 1px 5px;
+        border-radius: 4px;
+        font-size: .92em;
+    }
 
     footer {
         padding: 0 18px 28px;

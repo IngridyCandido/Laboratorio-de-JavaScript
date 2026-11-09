@@ -190,7 +190,84 @@
         <button id="botaoRemoverAtributo" class="secundario">Remover atributo</button>
         <p id="resultadoAtributo" class="resultado" aria-live="polite">O valor do atributo aparecerá aqui.</p>
       </section>
-    </div>
+
+      <section class="card" id="cardInserir">
+        <h2><span class="numero">15</span>Criar e inserir elementos</h2>
+
+        <h3>createTextNode()</h3>
+        <p><code>document.createTextNode()</code> cria um nó de texto que ainda não está na página. Aqui ele é inserido
+          com <code>append()</code>.</p>
+        <button id="botaoTextNode">Criar nó de texto</button>
+        <p id="areaTextNode" class="amostra">Área de demonstração: nenhum nó de texto criado.</p>
+
+        <h3>append()</h3>
+        <p><code>append()</code> adiciona conteúdo ao <strong>final</strong> de um elemento.</p>
+        <button id="botaoAppend">Adicionar ao final</button>
+        <ul id="listaAppend" class="lista-criada amostra">
+          <li>Item original</li>
+        </ul>
+
+        <h3>prepend()</h3>
+        <p><code>prepend()</code> adiciona conteúdo ao <strong>início</strong> de um elemento.</p>
+        <button id="botaoPrepend">Adicionar ao início</button>
+        <ul id="listaPrepend" class="lista-criada amostra">
+          <li>Item original</li>
+        </ul>
+      </section>
+
+      <section class="card" id="cardRemoverSubstituir">
+        <h2><span class="numero">16</span>Remover e substituir elementos</h2>
+
+        <h3>remove()</h3>
+        <p><code>elemento.remove()</code> tira o elemento da página.</p>
+        <div id="areaRemover" class="amostra">
+          <p id="elementoRemover" class="destaque">Eu sou o elemento que será removido.</p>
+        </div>
+        <button id="botaoRemover">Remover elemento</button>
+        <button id="botaoRestaurarRemover" class="secundario">Restaurar</button>
+        <p id="resultadoRemover" class="resultado" aria-live="polite">O elemento está na página.</p>
+
+        <h3>replaceWith()</h3>
+        <p><code>elemento.replaceWith(novo)</code> troca o elemento por outro.</p>
+        <div id="areaSubstituir" class="amostra">
+          <p id="elementoSubstituir" class="destaque">Eu sou o elemento original.</p>
+        </div>
+        <button id="botaoSubstituir">Substituir elemento</button>
+        <button id="botaoRestaurarSubstituir" class="secundario">Restaurar</button>
+        <p id="resultadoSubstituir" class="resultado" aria-live="polite">O elemento original está na página.</p>
+      </section>
+
+      <section class="card" id="cardNavegacao">
+        <h2><span class="numero">17</span>Caixas de diálogo e navegação</h2>
+
+        <h3>window.prompt()</h3>
+        <p>Abre uma caixa de diálogo para o usuário digitar uma informação.</p>
+        <button id="botaoPrompt">Perguntar meu nome</button>
+        <p id="resultadoPrompt" class="resultado" aria-live="polite">Aguardando resposta...</p>
+
+        <h3>window.open()</h3>
+        <p>Abre outra aba ou janela. O navegador pode bloquear pop-ups.</p>
+        <button id="botaoAbrirJanela">Abrir nova aba</button>
+        <p id="resultadoAbrir" class="resultado" aria-live="polite">Nenhuma janela aberta.</p>
+
+        <h3>window.close()</h3>
+        <p>Fecha a janela aberta acima. <strong>Aviso:</strong> o navegador só deixa o JavaScript fechar janelas que
+          ele mesmo abriu com <code>window.open()</code>.</p>
+        <button id="botaoFecharJanela">Fechar janela aberta</button>
+        <p id="resultadoFechar" class="resultado" aria-live="polite">Abra uma janela primeiro.</p>
+
+        <h3>window.location.reload()</h3>
+        <p>Recarrega a página atual (o que foi alterado nos exemplos será perdido).</p>
+        <button id="botaoRecarregar">Recarregar página</button>
+
+        <h3>window.history.back() e forward()</h3>
+        <p>Navegam pelo histórico. <strong>Aviso:</strong> só funcionam se houver uma página anterior ou seguinte no
+          histórico desta aba.</p>
+        <button id="botaoVoltar">Voltar</button>
+        <button id="botaoAvancar" class="secundario">Avançar</button>
+        <p id="resultadoHistorico" class="resultado" aria-live="polite">Use os botões para navegar no histórico.</p>
+      </section>
+  </div>
   </main>
 
   <footer>

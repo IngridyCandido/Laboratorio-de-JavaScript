@@ -342,3 +342,123 @@
       linkAtributo.removeAttribute("style");
       resultadoAtributo.textContent = "removeAttribute() removeu o atributo style.";
     });
+
+
+    let contadorTextNode = 0;
+    document.getElementById("botaoTextNode").addEventListener("click", function () {
+      const area = document.getElementById("areaTextNode");
+      if (contadorTextNode === 0) {
+        area.textContent = ""; 
+      }
+      contadorTextNode++;
+      const noTexto = document.createTextNode("Nó de texto nº " + contadorTextNode + " criado com createTextNode(). ");
+      area.append(noTexto);
+    });
+
+    let contadorAppend = 0;
+    document.getElementById("botaoAppend").addEventListener("click", function () {
+      contadorAppend++;
+      const item = document.createElement("li");
+      item.textContent = "Item adicionado ao final (append) nº " + contadorAppend;
+      document.getElementById("listaAppend").append(item);
+    });
+
+  
+    let contadorPrepend = 0;
+    document.getElementById("botaoPrepend").addEventListener("click", function () {
+      contadorPrepend++;
+      const item = document.createElement("li");
+      item.textContent = "Item adicionado ao início (prepend) nº " + contadorPrepend;
+      document.getElementById("listaPrepend").prepend(item);
+    });
+
+
+    const areaRemover = document.getElementById("areaRemover");
+    const elementoRemover = document.getElementById("elementoRemover");
+    const resultadoRemover = document.getElementById("resultadoRemover");
+
+    document.getElementById("botaoRemover").addEventListener("click", function () {
+      elementoRemover.remove();
+      resultadoRemover.textContent = "remove() executado: o elemento foi removido da página.";
+    });
+
+   
+    document.getElementById("botaoRestaurarRemover").addEventListener("click", function () {
+      areaRemover.append(elementoRemover);
+      resultadoRemover.textContent = "Elemento restaurado na página.";
+    });
+
+   
+    const areaSubstituir = document.getElementById("areaSubstituir");
+    const elementoOriginal = document.getElementById("elementoSubstituir");
+    const resultadoSubstituir = document.getElementById("resultadoSubstituir");
+    const elementoNovo = document.createElement("p");
+    elementoNovo.className = "destaque";
+    elementoNovo.textContent = "Eu sou o NOVO elemento, colocado por replaceWith().";
+
+    document.getElementById("botaoSubstituir").addEventListener("click", function () {
+      if (elementoOriginal.isConnected) {
+        elementoOriginal.replaceWith(elementoNovo);
+        resultadoSubstituir.textContent = "replaceWith() executado: o elemento original foi substituído.";
+      }
+    });
+
+    
+    document.getElementById("botaoRestaurarSubstituir").addEventListener("click", function () {
+      if (elementoNovo.isConnected) {
+        elementoNovo.replaceWith(elementoOriginal);
+        resultadoSubstituir.textContent = "O elemento original voltou para a página.";
+      }
+    });
+
+    document.getElementById("botaoPrompt").addEventListener("click", function () {
+      const nome = window.prompt("Qual é o seu nome?");
+      const resultadoPrompt = document.getElementById("resultadoPrompt");
+      if (nome === null) {
+        resultadoPrompt.textContent = "Você cancelou a caixa de diálogo.";
+      } else if (nome.trim() === "") {
+        resultadoPrompt.textContent = "Você não digitou nada.";
+      } else {
+        resultadoPrompt.textContent = "Olá, " + nome.trim() + "! Valor recebido com window.prompt().";
+      }
+    });
+
+    let janelaAberta = null;
+    document.getElementById("botaoAbrirJanela").addEventListener("click", function () {
+      const resultadoAbrir = document.getElementById("resultadoAbrir");
+      janelaAberta = window.open("https://developer.mozilla.org/pt-BR/", "_blank", "width=800,height=600");
+      if (janelaAberta) {
+        resultadoAbrir.textContent = "window.open() abriu uma nova janela.";
+      } else {
+        resultadoAbrir.textContent = "O navegador bloqueou o pop-up. Permita pop-ups para este site e tente de novo.";
+      }
+    });
+
+
+    document.getElementById("botaoFecharJanela").addEventListener("click", function () {
+      const resultadoFechar = document.getElementById("resultadoFechar");
+      if (janelaAberta && !janelaAberta.closed) {
+        janelaAberta.close();
+        resultadoFechar.textContent = "window.close() fechou a janela que foi aberta pelo JavaScript.";
+      } else {
+        resultadoFechar.textContent = "Não há janela aberta por JavaScript. Clique em \"Abrir nova aba\" primeiro.";
+      }
+    });
+
+
+    document.getElementById("botaoRecarregar").addEventListener("click", function () {
+      window.location.reload();
+    });
+
+
+    document.getElementById("botaoVoltar").addEventListener("click", function () {
+      document.getElementById("resultadoHistorico").textContent =
+        "history.back() executado. Se houver página anterior, o navegador voltará para ela.";
+      window.history.back();
+    });
+
+    document.getElementById("botaoAvancar").addEventListener("click", function () {
+      document.getElementById("resultadoHistorico").textContent =
+        "history.forward() executado. Se houver página seguinte, o navegador avançará para ela.";
+      window.history.forward();
+    });
